@@ -1,0 +1,5 @@
+rabbitmq:
+  url: "amqp://guest:guest@localhost:5672"
+  queue: "main_queue"
+  dlx_queue: "dlx_queue"
+  exchange: "dlx_exchange"

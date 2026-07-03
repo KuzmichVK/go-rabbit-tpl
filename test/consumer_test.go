@@ -8,12 +8,11 @@ import (
 	"github.com/lekan-pvp/grade/go-rabbit/pkg/rabbitmq"
 )
 
-
 func TestConsumer_ConsumeJSON(t *testing.T) {
 	// Создаём соединение
 	conn, err := rabbitmq.NewConnection("amqp://guest:guest@localhost:5672")
 	if err != nil {
-		t.Fatal("Failed to connect:", err)	
+		t.Fatal("Failed to connect:", err)
 	}
 	defer conn.Close()
 
@@ -29,8 +28,8 @@ func TestConsumer_ConsumeJSON(t *testing.T) {
 	// Отправляем тестовое сообщение
 	producer := rabbitmq.NewProducer(conn, monitor)
 	testMsg := &models.Message{
-		ID: 1,
-		Content: "test_consume",
+		ID:       1,
+		Content:  "test_consume",
 		Priority: 1,
 	}
 	err = producer.PublishJSON("", "test_consume", testMsg)
@@ -51,7 +50,7 @@ func TestConsumer_ConsumeJSON(t *testing.T) {
 		t.Fatal("Consume failed:", err)
 	}
 
-	time.Sleep(5*time.Second)
+	time.Sleep(5 * time.Second)
 
 	if !received {
 		t.Error("Expected to receive message, but didn't")

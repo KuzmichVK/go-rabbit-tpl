@@ -26,8 +26,8 @@ func TestProducer_PublishJSON(t *testing.T) {
 
 	// Подготавливаем сообщение
 	msg := &models.Message{
-		ID:	990,
-		Content: "Test message",
+		ID:       990,
+		Content:  "Test message",
 		Priority: 3,
 	}
 
